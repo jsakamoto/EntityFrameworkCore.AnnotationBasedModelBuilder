@@ -8,25 +8,25 @@
     <Company>J.Sakamoto</Company>
     <Product>Annotation based model builder for EntityFramework Core</Product>
     <Copyright>Copyright 2019 J.Sakamoto, MIT License</Copyright>
-    <PackageLicenseUrl>https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder</PackageProjectUrl>
     <PackageTags>entity-framework-core entityframeworkcore efcore</PackageTags>
     <PackageReleaseNotes>v.1.0.0
 - 1st release
-</PackageReleaseNotes>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Toolbelt.EntityFrameworkCore.IndexAttribute.xml</DocumentationFile>
+    </PackageReleaseNotes>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>1.0.0.4</Version>
     <PackageId>Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder</PackageId>
     <Description>Infrastructure for annotation based model building for EF Core.</Description>
+    <PackageLicenseFile></PackageLicenseFile>
+    <RepositoryType>Git</RepositoryType>
+    <RepositoryUrl>https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.3" />
   </ItemGroup>
 
 </Project>
