@@ -10,6 +10,12 @@ This class library is referenced by follow libraries.
 - [IndexAttribute for EF Core](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute/)
 - [DecimalAttribute for EF Core](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.DecimalAttribute/)
 
+## Release Note
+
+- **v.1.0.1** - Fix: Invalid XML Document comment file.
+- **v.1.0.0** - 1st release
+
+
 ## License
 
 [MIT License](https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder/blob/master/LICENSE)
