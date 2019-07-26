@@ -82,16 +82,19 @@ namespace Toolbelt.EntityFrameworkCore.Metadata.Builders
 
         private static void BuildForOwnedType(this ModelBuilder modelBuilder, IEntityType owned, Action<ReferenceOwnershipBuilder> buildAction)
         {
-            var owner = owned.DefiningEntityType;
+            var owner = owned.DefiningEntityType ?? owned.GetForeignKeys().FirstOrDefault(k => k.IsOwnership)?.PrincipalEntityType;
+            var definingNavigationName = owned.DefiningNavigationName ?? owned.GetForeignKeys().FirstOrDefault(k => k.IsOwnership)?.PrincipalToDependent.Name;
+            if (owner == null) throw new Exception("Owner type could not determind.");
+            if (definingNavigationName == null) throw new Exception("Defining navigation name could not determind.");
             if (!owner.IsOwned())
             {
                 modelBuilder.Entity(owner.ClrType)
-                    .OwnsOne(owned.ClrType, owned.DefiningNavigationName, buildAction);
+                    .OwnsOne(owned.ClrType, definingNavigationName, buildAction);
             }
             else
             {
                 modelBuilder.BuildForOwnedType(owner, builder =>
-                    builder.OwnsOne(owned.ClrType, owned.DefiningNavigationName, buildAction));
+                    builder.OwnsOne(owned.ClrType, definingNavigationName, buildAction));
             }
         }
     }

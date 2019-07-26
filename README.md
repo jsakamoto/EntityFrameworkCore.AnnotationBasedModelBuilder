@@ -12,6 +12,7 @@ This class library is referenced by follow libraries.
 
 ## Release Note
 
+- **v.1.0.2** - Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
 - **v.1.0.1** - Fix: Invalid XML Document comment file.
 - **v.1.0.0** - 1st release
 
