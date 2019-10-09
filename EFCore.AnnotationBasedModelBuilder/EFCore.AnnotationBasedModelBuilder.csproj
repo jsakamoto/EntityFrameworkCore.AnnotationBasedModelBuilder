@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder</AssemblyName>
     <RootNamespace>Toolbelt.EntityFrameworkCore.Metadata.Builders</RootNamespace>
     <Authors>J.Sakamoto</Authors>
@@ -10,7 +10,9 @@
     <Copyright>Copyright 2019 J.Sakamoto, MIT License</Copyright>
     <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder</PackageProjectUrl>
     <PackageTags>entity-framework-core entityframeworkcore efcore</PackageTags>
-    <PackageReleaseNotes>v.1.0.2
+    <PackageReleaseNotes>v.3.0.0
+- BREAKING CHANGE: supports EntityFramework Core v.3.0
+v.1.0.2
 - Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
 v.1.0.1
 - Fix: Invalid XML Document comment file.
@@ -20,17 +22,18 @@ v.1.0.0
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.2.0</Version>
+    <Version>3.0.0.0</Version>
     <PackageId>Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder</PackageId>
     <Description>Infrastructure for annotation based model building for EF Core.</Description>
     <PackageLicenseFile></PackageLicenseFile>
     <RepositoryType>Git</RepositoryType>
     <RepositoryUrl>https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageOutputPath>..\dist\</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.0.0" />
   </ItemGroup>
 
 </Project>

@@ -12,7 +12,7 @@ namespace Toolbelt.EntityFrameworkCore.Metadata.Builders
         public delegate TBuilderArg[] CreateBuilderArgument<TAttribute, TBuilderArg>(AnnotatedProperty<TAttribute>[] annotatedProperties)
             where TAttribute : Attribute;
 
-        public delegate void BuildModel<TBuilderArg>(EntityTypeBuilder builder1, ReferenceOwnershipBuilder builder2, TBuilderArg builderArg);
+        public delegate void BuildModel<TBuilderArg>(EntityTypeBuilder builder1, OwnedNavigationBuilder builder2, TBuilderArg builderArg);
 
         public static void Build<TAttribute>(ModelBuilder modelBuilder, BuildModel<AnnotatedProperty<TAttribute>> build)
             where TAttribute : Attribute
@@ -80,7 +80,7 @@ namespace Toolbelt.EntityFrameworkCore.Metadata.Builders
             }
         }
 
-        private static void BuildForOwnedType(this ModelBuilder modelBuilder, IEntityType owned, Action<ReferenceOwnershipBuilder> buildAction)
+        private static void BuildForOwnedType(this ModelBuilder modelBuilder, IEntityType owned, Action<OwnedNavigationBuilder> buildAction)
         {
             var owner = owned.DefiningEntityType ?? owned.GetForeignKeys().FirstOrDefault(k => k.IsOwnership)?.PrincipalEntityType;
             var definingNavigationName = owned.DefiningNavigationName ?? owned.GetForeignKeys().FirstOrDefault(k => k.IsOwnership)?.PrincipalToDependent.Name;

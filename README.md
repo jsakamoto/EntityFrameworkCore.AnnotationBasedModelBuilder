@@ -10,8 +10,16 @@ This class library is referenced by follow libraries.
 - [IndexAttribute for EF Core](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute/)
 - [DecimalAttribute for EF Core](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.DecimalAttribute/)
 
+## Support Versions
+
+EF Core Version | Suppored This Package Version
+----------------|------------------------------
+v.3.0           | v.3.0
+v.2.0, 2.1, 2.2 | v.1.0.x
+
 ## Release Note
 
+- **v.3.0.0** - BREAKING CHANGE: supports EntityFramework Core v.3.0
 - **v.1.0.2** - Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
 - **v.1.0.1** - Fix: Invalid XML Document comment file.
 - **v.1.0.0** - 1st release
