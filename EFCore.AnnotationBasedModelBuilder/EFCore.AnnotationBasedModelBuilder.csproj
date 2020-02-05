@@ -10,19 +10,18 @@
     <Copyright>Copyright 2019-2020 J.Sakamoto, MIT License</Copyright>
     <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder</PackageProjectUrl>
     <PackageTags>entity-framework-core entityframeworkcore efcore</PackageTags>
-    <PackageReleaseNotes>
-      v.3.1.0
-      - Supports EntityFramework Core v.3.1.0
-      - Revert back to .NET Standard 2.0
-      v.3.0.0
-      - BREAKING CHANGE: supports EntityFramework Core v.3.0
-      v.1.0.2
-      - Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
-      v.1.0.1
-      - Fix: Invalid XML Document comment file.
-      v.1.0.0
-      - 1st release
-    </PackageReleaseNotes>
+    <PackageReleaseNotes>v.3.1.0
+- Supports EntityFramework Core v.3.1.0
+- Revert back to .NET Standard 2.0
+v.3.0.0
+- BREAKING CHANGE: supports EntityFramework Core v.3.0
+v.1.0.2
+- Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
+v.1.0.1
+- Fix: Invalid XML Document comment file.
+v.1.0.0
+- 1st release
+</PackageReleaseNotes>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
