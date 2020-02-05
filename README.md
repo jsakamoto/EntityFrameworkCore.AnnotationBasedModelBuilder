@@ -14,11 +14,15 @@ This class library is referenced by follow libraries.
 
 EF Core Version | Suppored This Package Version
 ----------------|------------------------------
-v.3.0           | v.3.0
+v.3.1           | v.3.1
+v.3.0           | v.3.0, v.3.1
 v.2.0, 2.1, 2.2 | v.1.0.x
 
 ## Release Note
 
+- **v.3.1.0**
+    - Supports EntityFramework Core v.3.1.0
+    - Revert back to .NET Standard 2.0
 - **v.3.0.0** - BREAKING CHANGE: supports EntityFramework Core v.3.0
 - **v.1.0.2** - Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
 - **v.1.0.1** - Fix: Invalid XML Document comment file.
