@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Toolbelt.EntityFrameworkCore.Metadata.Builders.Test.Fixtures;
+using Xunit;
+
+namespace Toolbelt.EntityFrameworkCore.Metadata.Builders.Test
+{
+    public class AnnotationBasedModelBuilderTest
+    {
+        [Fact]
+        public void Build_Test()
+        {
+            var options = new DbContextOptionsBuilder()
+                .UseSqlServer($"Server=(LocalDb)\\MSSQLLocalDb;Database={Guid.NewGuid()};Integrated Security=True")
+                .Options;
+
+            var builderArguments = new List<FooBuilderArgument>();
+            var buildLog = new List<string>();
+            using var dbContext = new TestDbContext(options, modelBuilder =>
+            {
+                AnnotationBasedModelBuilder.Build<FooAttribute, FooBuilderArgument>(
+                    modelBuilder,
+                    (props) =>
+                    {
+                        var args = props.Select(prop => new FooBuilderArgument(prop)).ToArray();
+                        builderArguments.AddRange(args);
+                        return args;
+                    },
+                    (b1, b2, arg) =>
+                    {
+                        buildLog.Add($"{(b1 == null ? "(null)" : "b1")};{(b2 == null ? "(null)" : "b2")};{arg}");
+                    });
+            });
+
+            dbContext.Model.IsNotNull();
+
+            builderArguments
+                .Select(arg => arg.ToString())
+                .Is("LastName");
+
+            buildLog
+                .Is("b1;(null);LastName");
+        }
+    }
+}

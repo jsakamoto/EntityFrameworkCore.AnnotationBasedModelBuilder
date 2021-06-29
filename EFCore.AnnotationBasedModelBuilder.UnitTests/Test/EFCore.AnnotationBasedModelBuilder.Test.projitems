@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>286f11a5-951d-4742-aa02-7b2af144663c</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>EFCore.AnnotationBasedModelBuilder.Test</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AnnotationBasedModelBuilderTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Fixtures\FooAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Fixtures\FooBuilderArgument.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Fixtures\Person.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Fixtures\TestDbContext.cs" />
+  </ItemGroup>
+</Project>
