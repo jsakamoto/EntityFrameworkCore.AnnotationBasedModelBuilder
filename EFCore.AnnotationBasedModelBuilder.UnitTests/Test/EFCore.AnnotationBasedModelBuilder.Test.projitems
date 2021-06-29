@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AnnotationBasedModelBuilderTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Fixtures\FooAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Fixtures\FooBuilderArgument.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Fixtures\FullName.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Fixtures\Person.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Fixtures\TestDbContext.cs" />
   </ItemGroup>

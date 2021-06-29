@@ -4,9 +4,9 @@
     {
         public int Id { get; set; }
 
-        public string FirstName { get; set; } = "";
+        public FullName Name { get; set; }
 
         [Foo]
-        public string LastName { get; set; } = "";
+        public int Age { get; set; }
     }
 }

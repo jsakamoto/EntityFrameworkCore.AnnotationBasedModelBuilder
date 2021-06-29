@@ -25,12 +25,12 @@ namespace Toolbelt.EntityFrameworkCore.Metadata.Builders.Test
                     (props) =>
                     {
                         var args = props.Select(prop => new FooBuilderArgument(prop)).ToArray();
-                        builderArguments.AddRange(args);
+                        lock (builderArguments) builderArguments.AddRange(args);
                         return args;
                     },
                     (b1, b2, arg) =>
                     {
-                        buildLog.Add($"{(b1 == null ? "(null)" : "b1")};{(b2 == null ? "(null)" : "b2")};{arg}");
+                        lock (buildLog) buildLog.Add($"{(b1 == null ? "(null)" : "b1")};{(b2 == null ? "(null)" : "b2")};{arg}");
                     });
             });
 
@@ -38,10 +38,12 @@ namespace Toolbelt.EntityFrameworkCore.Metadata.Builders.Test
 
             builderArguments
                 .Select(arg => arg.ToString())
-                .Is("LastName");
+                .OrderBy(text => text)
+                .Is("Age", "LastName");
 
             buildLog
-                .Is("b1;(null);LastName");
+                .OrderBy(text => text)
+                .Is("(null);b2;LastName", "b1;(null);Age");
         }
     }
 }

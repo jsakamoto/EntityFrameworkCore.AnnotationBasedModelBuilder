@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Toolbelt.EntityFrameworkCore.Metadata.Builders
 {
@@ -26,7 +28,7 @@ namespace Toolbelt.EntityFrameworkCore.Metadata.Builders
             BuildModel<TBuilderArg> build
         ) where TAttribute : Attribute
         {
-            var entityTypes = modelBuilder.Model.GetEntityTypes();
+            var entityTypes = modelBuilder.Model.GetEntityTypes().OfType<EntityType>();
 
             Parallel.ForEach(entityTypes, entityType =>
             {
@@ -45,8 +47,9 @@ namespace Toolbelt.EntityFrameworkCore.Metadata.Builders
             });
         }
 
+        [SuppressMessage("Usage", "EF1001:Internal EF Core API usage.", Justification = "<Pending>")]
         private static TBuilderArg[] CreateBuilderArguments<TBuilderArg, TAttribute>(
-            IMutableEntityType entityType,
+            EntityType entityType,
             CreateBuilderArgument<TAttribute, TBuilderArg> createBuilderArgument
         )
             where TAttribute : Attribute
@@ -61,13 +64,14 @@ namespace Toolbelt.EntityFrameworkCore.Metadata.Builders
             return createBuilderArgument(annotatedProperties);
         }
 
+        [SuppressMessage("Usage", "EF1001:Internal EF Core API usage.", Justification = "<Pending>")]
         private static Action<TBuilderArg> BuildAction<TBuilderArg>(
             ModelBuilder modelBuilder,
-            IMutableEntityType entityType,
+            EntityType entityType,
             BuildModel<TBuilderArg> build
         )
         {
-            if (!entityType.IsOwned())
+            if (!IsOwned(entityType))
             {
                 return (TBuilderArg arg) => build(modelBuilder.Entity(entityType.ClrType), null, arg);
             }
@@ -80,13 +84,15 @@ namespace Toolbelt.EntityFrameworkCore.Metadata.Builders
             }
         }
 
-        private static void BuildForOwnedType(this ModelBuilder modelBuilder, IEntityType owned, Action<OwnedNavigationBuilder> buildAction)
+        [SuppressMessage("Usage", "EF1001:Internal EF Core API usage.", Justification = "<Pending>")]
+        private static void BuildForOwnedType(this ModelBuilder modelBuilder, EntityType owned, Action<OwnedNavigationBuilder> buildAction)
         {
-            var owner = owned.DefiningEntityType ?? owned.GetForeignKeys().FirstOrDefault(k => k.IsOwnership)?.PrincipalEntityType;
-            var definingNavigationName = owned.DefiningNavigationName ?? owned.GetForeignKeys().FirstOrDefault(k => k.IsOwnership)?.PrincipalToDependent.Name;
+            var ownershipKey = owned.GetForeignKeys().FirstOrDefault(k => k.IsOwnership);
+            var owner = ownershipKey?.PrincipalEntityType;
+            var definingNavigationName = ownershipKey?.PrincipalToDependent.Name;
             if (owner == null) throw new Exception("Owner type could not determind.");
             if (definingNavigationName == null) throw new Exception("Defining navigation name could not determind.");
-            if (!owner.IsOwned())
+            if (!IsOwned(owner))
             {
                 modelBuilder.Entity(owner.ClrType)
                     .OwnsOne(owned.ClrType, definingNavigationName, buildAction);
@@ -96,6 +102,12 @@ namespace Toolbelt.EntityFrameworkCore.Metadata.Builders
                 modelBuilder.BuildForOwnedType(owner, builder =>
                     builder.OwnsOne(owned.ClrType, definingNavigationName, buildAction));
             }
+        }
+
+        [SuppressMessage("Usage", "EF1001:Internal EF Core API usage.", Justification = "<Pending>")]
+        private static bool IsOwned(EntityType entityType)
+        {
+            return entityType.GetForeignKeys().Any(fk => fk.IsOwnership);
         }
     }
 }
