@@ -12,10 +12,12 @@ This class library is referenced by follow libraries.
 
 ## Support Versions
 
-EF Core Version | Suppored This Package Version
+EF Core Version | Supported This Package Version
 ----------------|------------------------------
-v.3.1           | v.3.1
-v.3.0           | v.3.0, v.3.1
+v.6.0           | v.5.0.1
+v.5.0           | v.5.0.1, v.3.1
+v.3.1           | v.5.0.1, v.3.1
+v.3.0           | v.5.0.1, v.3.1, v.3.0
 v.2.0, 2.1, 2.2 | v.1.0.x
 
 ## Release Notes
