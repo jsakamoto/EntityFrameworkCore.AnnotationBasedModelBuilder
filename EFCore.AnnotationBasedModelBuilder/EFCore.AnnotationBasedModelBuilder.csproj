@@ -10,18 +10,7 @@
     <Copyright>Copyright 2019-2020 J.Sakamoto, MIT License</Copyright>
     <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder</PackageProjectUrl>
     <PackageTags>entity-framework-core entityframeworkcore efcore</PackageTags>
-    <PackageReleaseNotes>v.3.1.0
-- Supports EntityFramework Core v.3.1.0
-- Revert back to .NET Standard 2.0
-v.3.0.0
-- BREAKING CHANGE: supports EntityFramework Core v.3.0
-v.1.0.2
-- Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
-v.1.0.1
-- Fix: Invalid XML Document comment file.
-v.1.0.0
-- 1st release
-</PackageReleaseNotes>
+    <PackageReleaseNotes>(Please write the package release notes in "RELEASE-NOTES.txt".)</PackageReleaseNotes>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -33,7 +22,13 @@ v.1.0.0
     <RepositoryUrl>https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageOutputPath>..\dist\</PackageOutputPath>
+    <PackageIcon>nupkg-icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\.assets\nupkg-icon.png" Visible="false" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.0.0" />
@@ -41,5 +36,15 @@ v.1.0.0
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.0" />
   </ItemGroup>
+
+  <Target Name="PreparePackageReleaseNotesFromFile" BeforeTargets="GenerateNuspec">
+    <ReadLinesFromFile File="../RELEASE-NOTES.txt">
+      <Output TaskParameter="Lines" ItemName="ReleaseNoteLines" />
+    </ReadLinesFromFile>
+    <PropertyGroup>
+      <PackageReleaseNotes>@(ReleaseNoteLines, '%0a')</PackageReleaseNotes>
+      <PackageReleaseNotes>$([System.Text.RegularExpressions.Regex]::Match($(PackageReleaseNotes), "^(v\.[\d\.]+.+?)v\.[\d\.]+", System.Text.RegularExpressions.RegexOptions.Singleline).Groups[1].Value)</PackageReleaseNotes>
+    </PropertyGroup>
+  </Target>
 
 </Project>

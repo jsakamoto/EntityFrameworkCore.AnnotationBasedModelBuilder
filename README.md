@@ -18,16 +18,9 @@ v.3.1           | v.3.1
 v.3.0           | v.3.0, v.3.1
 v.2.0, 2.1, 2.2 | v.1.0.x
 
-## Release Note
+## Release Notes
 
-- **v.3.1.0**
-    - Supports EntityFramework Core v.3.1.0
-    - Revert back to .NET Standard 2.0
-- **v.3.0.0** - BREAKING CHANGE: supports EntityFramework Core v.3.0
-- **v.1.0.2** - Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
-- **v.1.0.1** - Fix: Invalid XML Document comment file.
-- **v.1.0.0** - 1st release
-
+[Release notes](https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder/blob/master/RELEASE-NOTES.txt)
 
 ## License
 
