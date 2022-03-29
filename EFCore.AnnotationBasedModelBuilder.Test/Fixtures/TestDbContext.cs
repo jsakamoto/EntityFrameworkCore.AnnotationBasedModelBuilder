@@ -7,7 +7,7 @@ namespace Toolbelt.EntityFrameworkCore.Metadata.Builders.Test.Fixtures
     {
         private readonly Action<ModelBuilder> _OnModelCreatingCallBack;
 
-        public DbSet<Person> People { get; set; }
+        public DbSet<Person> People => this.Set<Person>();
 
         public TestDbContext(DbContextOptions options, Action<ModelBuilder> onModelCreating)
             : base(options)

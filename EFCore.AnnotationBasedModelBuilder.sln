@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28606.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32317.152
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README", "README", "{3327FCB8-5FB0-45BE-9718-3D78A671F09D}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,20 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README", "README", "{3327FC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.AnnotationBasedModelBuilder", "EFCore.AnnotationBasedModelBuilder\EFCore.AnnotationBasedModelBuilder.csproj", "{AE3BF733-0326-4085-88E4-852576C8871E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.AnnotationBasedModelBuilder.Test.EF60", "EFCore.AnnotationBasedModelBuilder.UnitTests\EF60\EFCore.AnnotationBasedModelBuilder.Test.EF60.csproj", "{AFA52FE7-C6FD-425E-8D81-95158F8BB6CB}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "EFCore.AnnotationBasedModelBuilder.Test", "EFCore.AnnotationBasedModelBuilder.UnitTests\Test\EFCore.AnnotationBasedModelBuilder.Test.shproj", "{286F11A5-951D-4742-AA02-7B2AF144663C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{4EC61593-470F-4CA2-960B-3C39851E657A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.AnnotationBasedModelBuilder.Test.EF50", "EFCore.AnnotationBasedModelBuilder.UnitTests\EF50\EFCore.AnnotationBasedModelBuilder.Test.EF50.csproj", "{D7DD800C-9197-4A4A-A666-8D834CC4681B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.AnnotationBasedModelBuilder.Test", "EFCore.AnnotationBasedModelBuilder.Test\EFCore.AnnotationBasedModelBuilder.Test.csproj", "{AABC028F-5CF0-4CC3-A9A4-48EE8F6C3765}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		EFCore.AnnotationBasedModelBuilder.UnitTests\Test\EFCore.AnnotationBasedModelBuilder.Test.projitems*{286f11a5-951d-4742-aa02-7b2af144663c}*SharedItemsImports = 13
-		EFCore.AnnotationBasedModelBuilder.UnitTests\Test\EFCore.AnnotationBasedModelBuilder.Test.projitems*{afa52fe7-c6fd-425e-8d81-95158f8bb6cb}*SharedItemsImports = 5
-		EFCore.AnnotationBasedModelBuilder.UnitTests\Test\EFCore.AnnotationBasedModelBuilder.Test.projitems*{d7dd800c-9197-4a4a-a666-8d834cc4681b}*SharedItemsImports = 5
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -35,22 +24,13 @@ Global
 		{AE3BF733-0326-4085-88E4-852576C8871E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE3BF733-0326-4085-88E4-852576C8871E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE3BF733-0326-4085-88E4-852576C8871E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AFA52FE7-C6FD-425E-8D81-95158F8BB6CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFA52FE7-C6FD-425E-8D81-95158F8BB6CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AFA52FE7-C6FD-425E-8D81-95158F8BB6CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AFA52FE7-C6FD-425E-8D81-95158F8BB6CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D7DD800C-9197-4A4A-A666-8D834CC4681B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D7DD800C-9197-4A4A-A666-8D834CC4681B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D7DD800C-9197-4A4A-A666-8D834CC4681B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D7DD800C-9197-4A4A-A666-8D834CC4681B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AABC028F-5CF0-4CC3-A9A4-48EE8F6C3765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AABC028F-5CF0-4CC3-A9A4-48EE8F6C3765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AABC028F-5CF0-4CC3-A9A4-48EE8F6C3765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AABC028F-5CF0-4CC3-A9A4-48EE8F6C3765}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{AFA52FE7-C6FD-425E-8D81-95158F8BB6CB} = {4EC61593-470F-4CA2-960B-3C39851E657A}
-		{286F11A5-951D-4742-AA02-7B2AF144663C} = {4EC61593-470F-4CA2-960B-3C39851E657A}
-		{D7DD800C-9197-4A4A-A666-8D834CC4681B} = {4EC61593-470F-4CA2-960B-3C39851E657A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE2C4312-676E-4DAF-B680-B635DF402AD5}
