@@ -1,5 +1,5 @@
 # Annotation based model builder for EntityFramework Core  
-[![NuGet Package](https://img.shields.io/nuget/v/Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder.svg)](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder/)
+[![NuGet Package](https://img.shields.io/nuget/v/Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder.svg)](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder/) [![unit tests](https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder/actions/workflows/unit-tests.yml/badge.svg?branch=master&event=push)](https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder/actions/workflows/unit-tests.yml)
 
 ## What's this?
 
