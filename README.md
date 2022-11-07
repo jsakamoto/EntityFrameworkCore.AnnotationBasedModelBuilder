@@ -10,10 +10,11 @@ This class library is referenced by follow libraries.
 - [IndexAttribute for EF Core](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute/)
 - [DecimalAttribute for EF Core](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.DecimalAttribute/)
 
-## Support Versions
+## Supported Versions
 
-EF Core Version | Supported This Package Version
+The version of EF Core | Supported version of this package
 ----------------|------------------------------
+v.7.0           | v.5.0.1
 v.6.0           | v.5.0.1
 v.5.0           | v.5.0.1, v.3.1
 v.3.1           | v.5.0.1, v.3.1
