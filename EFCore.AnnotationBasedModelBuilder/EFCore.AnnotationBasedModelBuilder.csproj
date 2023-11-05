@@ -5,7 +5,7 @@
     <AssemblyName>Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder</AssemblyName>
     <RootNamespace>Toolbelt.EntityFrameworkCore.Metadata.Builders</RootNamespace>
     <PackageId>Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder</PackageId>
-    <Version>5.0.1</Version>
+    <Version>5.0.1.1</Version>
     <Authors>J.Sakamoto</Authors>
     <Company>J.Sakamoto</Company>
     <Product>Annotation based model builder for EntityFramework Core</Product>
