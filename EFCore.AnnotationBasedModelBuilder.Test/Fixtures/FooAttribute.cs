@@ -1,9 +1,6 @@
-﻿using System;
+﻿namespace Toolbelt.EntityFrameworkCore.Metadata.Builders.Test.Fixtures;
 
-namespace Toolbelt.EntityFrameworkCore.Metadata.Builders.Test.Fixtures
+[AttributeUsage(AttributeTargets.All)]
+public class FooAttribute : Attribute
 {
-    [AttributeUsage(AttributeTargets.All)]
-    public class FooAttribute : Attribute
-    {
-    }
 }

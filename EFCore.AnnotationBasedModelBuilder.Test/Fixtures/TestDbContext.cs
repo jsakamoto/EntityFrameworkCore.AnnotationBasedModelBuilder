@@ -1,24 +1,22 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace Toolbelt.EntityFrameworkCore.Metadata.Builders.Test.Fixtures
+namespace Toolbelt.EntityFrameworkCore.Metadata.Builders.Test.Fixtures;
+
+public class TestDbContext : DbContext
 {
-    public class TestDbContext : DbContext
+    private readonly Action<ModelBuilder> _OnModelCreatingCallBack;
+
+    public DbSet<Person> People => this.Set<Person>();
+
+    public TestDbContext(DbContextOptions options, Action<ModelBuilder> onModelCreating)
+        : base(options)
     {
-        private readonly Action<ModelBuilder> _OnModelCreatingCallBack;
+        this._OnModelCreatingCallBack = onModelCreating;
+    }
 
-        public DbSet<Person> People => this.Set<Person>();
-
-        public TestDbContext(DbContextOptions options, Action<ModelBuilder> onModelCreating)
-            : base(options)
-        {
-            this._OnModelCreatingCallBack = onModelCreating;
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            this._OnModelCreatingCallBack.Invoke(modelBuilder);
-        }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        this._OnModelCreatingCallBack.Invoke(modelBuilder);
     }
 }

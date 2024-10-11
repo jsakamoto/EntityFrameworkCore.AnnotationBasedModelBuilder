@@ -1,14 +1,13 @@
-﻿namespace Toolbelt.EntityFrameworkCore.Metadata.Builders.Test.Fixtures
+﻿namespace Toolbelt.EntityFrameworkCore.Metadata.Builders.Test.Fixtures;
+
+public class FooBuilderArgument
 {
-    public class FooBuilderArgument
+    private readonly AnnotatedProperty<FooAttribute> _Prop;
+
+    public FooBuilderArgument(AnnotatedProperty<FooAttribute> prop)
     {
-        private readonly AnnotatedProperty<FooAttribute> _Prop;
-
-        public FooBuilderArgument(AnnotatedProperty<FooAttribute> prop)
-        {
-            this._Prop = prop;
-        }
-
-        public override string ToString() => $"{_Prop.Name}";
+        this._Prop = prop;
     }
+
+    public override string ToString() => $"{this._Prop.Name}";
 }
