@@ -16,6 +16,10 @@ dotnet test --project EFCore.AnnotationBasedModelBuilder.Test -f net9.0 --filter
 
 Building the library also produces a `.nupkg` into `dist/` (`GeneratePackageOnBuild`). Tests need .NET 8, 9 and 10 SDKs/runtimes.
 
+## Test assertions
+
+The tests use the `ChainingAssertion-xUnit.Bin` extension methods (`.Is(...)`, `.IsNotNull()`) with `using Xunit;`.
+
 ## Architecture
 
 All logic is in `EFCore.AnnotationBasedModelBuilder/AnnotationBasedModelBuilder.cs`. Typical consumer flow: call `AnnotationBasedModelBuilder.Build<TAttribute[, TBuilderArg]>(modelBuilder, createBuilderArgument, build)` from `OnModelCreating`.
