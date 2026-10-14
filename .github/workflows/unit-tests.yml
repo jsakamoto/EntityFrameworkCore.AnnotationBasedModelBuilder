@@ -20,6 +20,13 @@ jobs:
             9.0.x
             10.0.x
 
+      # .NET 11 is still in RC, so it needs the preview quality
+      - name: Setup .NET SDK 11 (RC)
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 11.0.x
+          dotnet-quality: preview
+
       # Run tests
       - name: Run tests
         working-directory: EFCore.AnnotationBasedModelBuilder.Test
