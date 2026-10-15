@@ -33,12 +33,16 @@ All logic is in `EFCore.AnnotationBasedModelBuilder/AnnotationBasedModelBuilder.
 - Owned types are reached by walking the ownership foreign key back to the owner and calling `OwnsOne(...)` on it. This recurses for nested owned types, so the builder is always obtained from the root entity downward. This is the part that needs care when changing anything.
 - `build` invocations are serialized with `lock (modelBuilder)`, because `ModelBuilder` is not thread-safe. Only reflection and `createBuilderArgument` run in parallel, so those callbacks must be thread-safe (the test locks around its shared lists).
 
-The code uses EF Core internal APIs (`EntityType`, `EF1001`, suppressed via `NoWarn` and `SuppressMessage`). The library intentionally targets old EF Core versions (`netstandard2.0` with EF Core Relational 3.1.0, `netstandard2.1` with 3.0.0) so that one package works with EF Core 3.0 through 11. Do not bump those package versions. The library also targets `net10.0` and `net11.0`, which reference the matching EF Core Relational 10 and 11. The test project is where compatibility with EF Core 8/9/10/11 is verified, using Sqlite in memory.
+The code uses EF Core internal APIs (`EntityType`, `EF1001`, suppressed via `NoWarn` and `SuppressMessage`).
 
-.NET 11 is still in RC, so every `net11.0` package reference (library and tests) points to `11.0.0-rc.2.26504.105`. When a new RC or the GA ships, update all of them together.
+## Target frameworks and EF Core versions
+
+Follow these three rules.
+
+1. **The library lists each .NET version from `net10.0` on.** It targets `netstandard2.0` and `netstandard2.1`, plus `net10.0` and `net11.0` one by one. When a new .NET major version ships, add its TFM. These TFMs are there so that nuget.org shows them as supported.
+2. **The library keeps the oldest EF Core reference on every TFM.** It references EF Core Relational 3.0.0 (3.1.0 for `netstandard2.0`, because EF Core 3.0 does not support it). This keeps one package usable with EF Core 3.0 through the latest. Never raise it, not even for `net10.0` or later. A newer reference would force users to upgrade EF Core, for example a .NET 10 app that still uses EF Core 8.
+3. **The test project uses the latest EF Core of the same major version as each TFM.** It targets `net8.0` to `net11.0`, and each TFM has a conditional `PackageReference` group (for example, `net10.0` uses the latest EF Core 10.0.x). This is where compatibility with each EF Core version is checked, using Sqlite in memory. While a .NET version is still in preview or RC, use its latest prerelease (now `11.0.0-rc.2.26504.105`). When you bump versions, update every group.
 
 ## Releasing
 
 Version lives in the library csproj (`<Version>`). Package release notes are extracted from the top entry of `RELEASE-NOTES.txt` (the entry must start with `v.x.y.z`), so add new entries at the top in that format. The README has a supported-versions table that should be kept in sync with EF Core support changes.
-
-While the `net11.0` target depends on an EF Core 11 RC, packing warns NU5104 (a stable package with a prerelease dependency). Move to the EF Core 11 GA version before you release.
