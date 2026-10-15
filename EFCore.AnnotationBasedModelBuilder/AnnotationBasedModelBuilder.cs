@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -53,8 +54,12 @@ namespace Toolbelt.EntityFrameworkCore.Metadata.Builders
         )
             where TAttribute : Attribute
         {
+            // Properties inherited from the base entity type are configured there. EF Core rejects some settings, such as keys, on derived types.
+            // Go through IMutableEntityType, because ITypeBase.ClrType compiled against EF Core 3.x is missing at runtime on EF Core 8 or later.
+            var baseClrType = (((IMutableEntityType)entityType).BaseType as EntityType)?.ClrType;
             var annotatedProperties = entityType.ClrType
                 .GetProperties()
+                .Where(prop => baseClrType == null || !prop.DeclaringType.IsAssignableFrom(baseClrType))
                 .SelectMany(prop => Attribute.GetCustomAttributes(prop, typeof(TAttribute))
                     .Cast<TAttribute>()
                     .Select(attrib => new AnnotatedProperty<TAttribute>(prop.Name, attrib))

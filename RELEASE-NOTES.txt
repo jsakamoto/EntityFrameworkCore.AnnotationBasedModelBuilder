@@ -1,4 +1,7 @@
-﻿v.5.0.1.4
+﻿v.5.0.1.5
+- Fixed an issue where attributes on properties inherited from a base entity type were also applied to its derived entity types
+
+v.5.0.1.4
 - Supports EntityFramework Core 11.0 RC 2
 - Update README.md
 
