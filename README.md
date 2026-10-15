@@ -14,7 +14,7 @@ This class library is referenced by follow libraries.
 
 The version of EF Core | Supported version of this package
 -----------------------|------------------------------
-v.6, 7, 8, 9, and 10   | v.5.0.1 or later
+v.6, 7, ...11          | v.5.0.1 or later
 v.5.0                  | v.5.0.1 or later, v.3.1
 v.3.1                  | v.5.0.1 or later, v.3.1
 v.3.0                  | v.5.0.1 or later, v.3.1, v.3.0
