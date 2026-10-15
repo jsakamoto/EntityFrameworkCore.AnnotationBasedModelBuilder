@@ -35,6 +35,17 @@ All logic is in `EFCore.AnnotationBasedModelBuilder/AnnotationBasedModelBuilder.
 
 The code uses EF Core internal APIs (`EntityType`, `EF1001`, suppressed via `NoWarn` and `SuppressMessage`).
 
+- On a derived entity type, properties inherited from the base entity type are skipped, because the base entity type configures them. EF Core rejects some settings on derived types. For example, `HasKey()` throws "A key cannot be configured on ... because it is a derived type" (IndexAttribute issue #12).
+
+### Binary compatibility trap with EF Core metadata APIs
+
+The library is compiled against EF Core 3.x, but it runs on EF Core 3.0 through 11. The compiled code records the interface that declares each member it calls. Later EF Core versions moved some members to other interfaces. Such code still compiles against the new EF Core, but it throws `MissingMethodException` at runtime. For example, `entityType.BaseType.ClrType` on the `IMutableEntityType` interface fails on EF Core 8 and later, because `ClrType` is no longer declared on `ITypeBase`.
+
+- To read the CLR type, cast to the internal `EntityType` class and use its `ClrType` property, as the existing code does. `IMutableEntityType.BaseType` itself still works.
+- Run the tests on every TFM after you touch any EF Core metadata API. A build that passes proves nothing here.
+
+The same trap applies to IndexAttribute and DecimalAttribute, which are also compiled against EF Core 3.x.
+
 ## Target frameworks and EF Core versions
 
 Follow these three rules.
