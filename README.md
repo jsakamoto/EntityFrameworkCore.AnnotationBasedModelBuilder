@@ -1,18 +1,18 @@
-# Annotation based model builder for EntityFramework Core  
+# Annotation based model builder for Entity Framework Core  
 [![NuGet Package](https://img.shields.io/nuget/v/Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder.svg)](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder/) [![unit tests](https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder/actions/workflows/unit-tests.yml/badge.svg?branch=master&event=push)](https://github.com/jsakamoto/EntityFrameworkCore.AnnotationBasedModelBuilder/actions/workflows/unit-tests.yml)
 
 ## What's this?
 
-This class library, for EntityFramework Core on .NET Core/.NET Framework, is an infrastructure for annotation based model building outside of EntityFramework official team.
+This library is a shared base for building Entity Framework Core models from your own annotations (attributes). It is not a part of the official Entity Framework Core project.
 
-This class library is referenced by follow libraries.
+The following libraries use it.
 
 - [IndexAttribute for EF Core](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute/)
 - [DecimalAttribute for EF Core](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.DecimalAttribute/)
 
 ## Supported Versions
 
-The version of EF Core | Supported version of this package
+EF Core version        | Package version
 -----------------------|------------------------------
 v.6, 7, ...11          | v.5.0.1 or later
 v.5.0                  | v.5.0.1 or later, v.3.1
