@@ -52,7 +52,7 @@ Follow these three rules.
 
 1. **The library lists each .NET version from `net10.0` on.** It targets `netstandard2.0` and `netstandard2.1`, plus `net10.0` and `net11.0` one by one. When a new .NET major version ships, add its TFM. These TFMs are there so that nuget.org shows them as supported.
 2. **The library keeps the oldest EF Core reference on every TFM.** It references EF Core Relational 3.0.0 (3.1.0 for `netstandard2.0`, because EF Core 3.0 does not support it). This keeps one package usable with EF Core 3.0 through the latest. Never raise it, not even for `net10.0` or later. A newer reference would force users to upgrade EF Core, for example a .NET 10 app that still uses EF Core 8.
-3. **The test project uses the latest EF Core of the same major version as each TFM.** It targets `net8.0` to `net11.0`, and each TFM has a conditional `PackageReference` group (for example, `net10.0` uses the latest EF Core 10.0.x). This is where compatibility with each EF Core version is checked, using Sqlite in memory. While a .NET version is still in preview or RC, use its latest prerelease (now `11.0.0-rc.2.26504.105`). When you bump versions, update every group.
+3. **The test project uses the latest EF Core of the same major version as each TFM.** It targets `net8.0` to `net11.0`, and each TFM has a conditional `PackageReference` group (for example, `net10.0` uses the latest EF Core 10.0.x). This is where compatibility with each EF Core version is checked, using Sqlite in memory. While a .NET version is still in preview or RC, use its latest prerelease. When you bump versions, update every group.
 
 ## Releasing
 
